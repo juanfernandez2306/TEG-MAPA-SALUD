@@ -29,24 +29,14 @@ document.addEventListener('DOMContentLoaded', function (){
 		
 	// Mapa Base de Google layers
 		
-	// Google Maps
-	var roadMutant = L.gridLayer.googleMutant({
-		minZoom: 7,
-		maxZoom: 19,
-		type:'roadmap'
-		});
-		
 	// Google Satelite
 	var hybridMutant = L.gridLayer.googleMutant({
-		minZoom: 7,
-		maxZoom: 19,
 		type:'hybrid'
 		});
 		
 	// Definición de variables de los mapa base	
 	var mapabase = {
 		"Mapa base de OpenStreetMap" : osm,
-		"Mapa base de Google Maps" : roadMutant,
 		"Mapa base de Google Satelite" : hybridMutant};
 		
 	//Agregar CONTROL para mostrar la información de la capa de  ASIC
@@ -201,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function (){
 			ptsRacsAMB = L.geoJson(racs, { filter: filtroAMB, pointToLayer: simblogiaRacs }),
 			ptsRAES = L.geoJson(raes, { pointToLayer: simblogiaRAES });
 		
-		parentGroup = L.markerClusterGroup();
+		var parentGroup = L.markerClusterGroup();
 		
 		mySubGroup = L.featureGroup.subGroup(parentGroup, [ptsCDI]);
 		mySubGroup1 = L.featureGroup.subGroup(parentGroup, [ptsHospitales]);
