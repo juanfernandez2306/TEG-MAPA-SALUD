@@ -5,7 +5,7 @@
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	
-	<!-- leafletJS -->
+	<!--
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 	
@@ -34,25 +34,34 @@
 	<script src="capas/hospitales.js"></script>
 	<script src="capas/racs.js"></script>
 	<script src="capas/raes.js"></script>
+	-->
+	<!-- remover este link para el final -->
+	<link rel="stylesheet" href="javascript-css/index.css" />
+	
 	</head>
 	<body>
-		<header class="bordesAzules">
-			<figure>
-				<img src="https://i.ibb.co/J7wFTm8/LUZ.jpg" width="80px"/>
-				<img src="https://i.ibb.co/N1TXJLX/postgrado.png" width="300px"/>
-				<img src="https://i.ibb.co/bdhnd2z/geodesia-LUZ.png" width="85px" />
-			</figure>
-			<section>
-				<h1>Mapa Sanitario del Municipio Mara</h1>
-			</section>
-		</header>
-		<div id="map" class="bordesAzules"></div>
-		<footer class="bordesAzules">
-			<p>Universidad del Zulia - Postgrado de Ingeniería - Facultad de Ingeniería</p>
-			<p>Programa de Postgrado en Catastro y Avalúo Inmobiliario</p>
-			<p>Trabajo de Grado</p>
-			<p><b></p>"Sistema de información geográfico para la administración de la red de Atención Primaria de Salud del Municipio Mara, Estado Zulia"</b></p>
-			<a href="https://drive.google.com/open?id=1gkPXti_LChM5F73EMAtw6ND-1V5I3hak">Autor: Ing. Juan R. Fernandez M</a>
-		</footer>
+		<div class="container">
+			<header class="bordesAzules">
+				<figure>
+					<!-- <img src="https://i.ibb.co/J7wFTm8/LUZ.jpg" width="80px"/> -->
+					<img src="img/LUZ.jpg" width="80px"/>
+					<!-- <img src="https://i.ibb.co/N1TXJLX/postgrado.png" width="300px"/> -->
+					<img src="img/postgrado.png" width="300px"/>
+					<!-- <img src="https://i.ibb.co/bdhnd2z/geodesia-LUZ.png" width="85px" /> -->
+					<img src="img/geodesia-LUZ.png" width="85px" />
+				</figure>
+				<section>
+					<h1>Mapa Sanitario del Municipio Mara</h1>
+				</section>
+			</header>
+			<div id="map" class="bordesAzules"></div>
+			<footer class="bordesAzules">
+				<p>Universidad del Zulia - Postgrado de Ingeniería - Facultad de Ingeniería</p>
+				<p>Programa de Postgrado en Catastro y Avalúo Inmobiliario</p>
+				<p>Trabajo de Grado</p>
+				<p><b></p>"Sistema de información geográfico para la administración de la red de Atención Primaria de Salud del Municipio Mara, Estado Zulia"</b></p>
+				<a href="https://drive.google.com/open?id=1gkPXti_LChM5F73EMAtw6ND-1V5I3hak">Autor: Ing. Juan R. Fernandez M</a>
+			</footer>
+		</div>
 	</body>
 </html>
