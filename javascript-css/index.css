@@ -1,6 +1,5 @@
-	
 *{
-	margin: 0;
+	margin: auto;
 	padding: 0;
 	box-sizing: border-box;
 }
@@ -8,6 +7,107 @@
 body {
 	font-family: 'Montserrat', sans-serif;
 }
+
+div.container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+}
+
+#buttonMap{
+	display: none;
+}
+
+header{
+	background: white;
+	padding-top: 10px;
+}
+
+#buttonMap a{
+	border: 1px solid #2e518b;
+	padding: 10px;
+	background-color: #2e518b;
+	color: #ffffff;
+	text-decoration: none;
+	font-family: 'Helvetica', sans-serif;
+	border-radius: 50px;
+}
+
+#buttonMap{
+	padding: 10px;
+}
+
+#buttonMap a i:nth-child(1){
+	margin-right: 10px;
+}
+ 
+#buttonMap a i:nth-child(2){
+	margin-left: 10px;
+} 
+
+@media (min-width: 992px){
+	div.container{
+		width: 992px;
+	}
+	
+	#map{
+		width: 100%;
+		height: 600px;
+		background: green;
+	}
+}
+
+@media (max-width: 992px){
+	div.container{
+		background: blue;
+	}
+}
+
+@media (min-width: 720px) and (max-width: 992px){
+	#map{
+		width: 100%;
+		height: 600px;
+		background: red;
+	}
+}
+
+@media (max-width: 720px){
+	#map{
+		width: 100%;
+		height: 100vh;
+		background: #ccc;
+	}
+	
+	header{
+		display: flex;
+		justify-content:space-between;
+		align-items:center;
+
+		flex-direction:row;
+		flex-wrap:wrap;
+	}
+	
+	div.column{
+		display:flex;
+		flex-wrap:wrap;
+		align-items:center;
+	}
+	
+	#imgLuz, #imgGeo{
+		width: 20%;
+	}
+	
+	#imgPost, #titulo{
+		width: 70%;
+	}
+	
+	#buttonMap{
+		display: flex;
+	}
+}
+
+/*
 	
 header {
 		background: white;
@@ -223,3 +323,5 @@ nav ul.tabs li h3 {
 		font-family: 'Montserrat', sans-serif;
 		font-size: 1.1em;
 	}
+	
+*/

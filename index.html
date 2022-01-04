@@ -7,6 +7,7 @@
 	
 	<!--
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 	
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -36,23 +37,33 @@
 	<script src="capas/raes.js"></script>
 	-->
 	<!-- remover este link para el final -->
+	<link rel="stylesheet" href="../complementos/fontawesome/fontawesome/all.min.css">
 	<link rel="stylesheet" href="javascript-css/index.css" />
 	
 	</head>
 	<body>
 		<div class="container">
-			<header class="bordesAzules">
-				<figure>
-					<!-- <img src="https://i.ibb.co/J7wFTm8/LUZ.jpg" width="80px"/> -->
-					<img src="img/LUZ.jpg" width="80px"/>
-					<!-- <img src="https://i.ibb.co/N1TXJLX/postgrado.png" width="300px"/> -->
-					<img src="img/postgrado.png" width="300px"/>
-					<!-- <img src="https://i.ibb.co/bdhnd2z/geodesia-LUZ.png" width="85px" /> -->
-					<img src="img/geodesia-LUZ.png" width="85px" />
-				</figure>
-				<section>
-					<h1>Mapa Sanitario del Municipio Mara</h1>
-				</section>
+			<header>
+				<div class="column">
+					<!-- <img id="imgLuz" src="https://i.ibb.co/J7wFTm8/LUZ.jpg" width="80px"/> -->
+					<img id="imgLuz" src="img/LUZ.jpg" width="80px"/>
+					<!-- <img id="imgPost" src="https://i.ibb.co/N1TXJLX/postgrado.png" width="300px"/> -->
+					<img id="imgPost" src="img/postgrado.png" width="300px"/>
+				</div>
+				<div class="column">
+					<!-- <img id="imgGeo" src="https://i.ibb.co/bdhnd2z/geodesia-LUZ.png" width="85px" /> -->
+					<img id="imgGeo" src="img/geodesia-LUZ.png" width="85px" />
+					<section id="titulo">
+						<h1>Mapa Sanitario del Municipio Mara</h1>
+					</section>
+				</div>
+				<div class="column" id="buttonMap">
+					<a href="#map">
+						<i class="fas fa-map-marked-alt"></i>
+						Ir a mapa
+						<i class="fas fa-arrow-down"></i>
+					</a>
+				</div>
 			</header>
 			<div id="map" class="bordesAzules"></div>
 			<footer class="bordesAzules">
