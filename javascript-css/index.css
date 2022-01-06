@@ -2,6 +2,12 @@ footer svg{
 	width: 25px;
 }
 
+@media (max-width: 300px){
+	header figure{
+		display: none;
+	}
+}
+
 @media (max-width: 576px){
 	#imgPost{
 		width: 250px;
@@ -24,6 +30,20 @@ footer svg{
 		text-align: justify;
 	}
 	
+	header img:nth-child(1){
+		width: 20%;
+	}
+	header img:nth-child(2){
+		width: 70%;
+	}
+	
+}
+
+@media (min-width: 576px){
+	#map{
+		background: green;
+		height: 80vh;
+	}
 }
 
 /*
