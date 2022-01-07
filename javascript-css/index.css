@@ -1,48 +1,63 @@
-footer svg{
-	width: 25px;
+.container{
+	margin-left: auto;
+	margin-right: auto;
+}
+@media (min-width: 1120px){
+	.container{
+		max-width: 1140px;
+	}
+	header{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		background: red;
+	}
+}
+
+@media(min-width: 850px) and (max-width: 1120px){
+	header{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: no-wrap;
+		background: green;
+		align-items: center;
+	}
+	
+	header figure{
+		min-width: 473px;
+	}
+	
+	header div{
+		text-align: center;
+	}
+}
+
+@media (min-width: 576px) and (max-width: 850px){
+	header{
+		display: flex;
+		flex-direction: column;
+		background: blue;
+	}
+	
+	header figure{
+		display: flex;
+		flex-wrap: no-wrap;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	
+	header div{
+		text-align: center;
+	}
 }
 
 @media (max-width: 300px){
 	header figure{
 		display: none;
 	}
-}
-
-@media (max-width: 576px){
-	#imgPost{
-		width: 250px;
-	}
 	
-	#imgGeo{
-		display: none;
-	}
-	
-	header h1{
-		text-align: center;
-	}
-	
-	#map{
-		height: 100vh;
-		background: red;
-	}
-	
-	#contenido p{
-		text-align: justify;
-	}
-	
-	header img:nth-child(1){
-		width: 20%;
-	}
-	header img:nth-child(2){
-		width: 70%;
-	}
-	
-}
-
-@media (min-width: 576px){
-	#map{
-		background: green;
-		height: 80vh;
+	header div{
+		
 	}
 }
 
