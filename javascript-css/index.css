@@ -3,8 +3,31 @@
 	padding: 0px;
 }
 
+:root{
+	--myColor: rgb(83,144,201);
+}
+
 .bordes{
-	box-shadow: rgb(83,144,201) .2rem .2rem .2rem;
+	box-shadow: var(--myColor) .2rem .2rem .2rem;
+}
+
+.btn{
+	background-color: var(--myColor);
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 1.1rem;
+}
+
+.btn i:first-child{
+	margin-right: .5rem;
+}
+
+.btn i:last-child{
+	margin-left: .5rem;
 }
 
 #map{
@@ -27,11 +50,21 @@ header{
 	grid-template-columns: 1fr;
 }
 
+#btn{
+	text-align: center;
+}
+
 .container .header{
 	display: grid;
 	grid-gap: .5rem;
 	grid-template-columns: 2fr 1fr;
 	align-items: center;
+}
+
+@media (min-width: 576px){
+	#btn{
+		display: none;
+	}
 }
 
 @media (max-width: 576px){
