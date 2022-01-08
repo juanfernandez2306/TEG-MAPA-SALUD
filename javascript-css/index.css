@@ -4,7 +4,7 @@
 }
 
 .bordes{
-	box-shadow: rgb(83,144,201) 5px 5px 5px;
+	box-shadow: rgb(83,144,201) .2rem .2rem .2rem;
 }
 
 #map{
@@ -31,7 +31,7 @@ header{
 	display: grid;
 	grid-gap: .5rem;
 	grid-template-columns: 2fr 1fr;
-	aling-items: center;
+	align-items: center;
 }
 
 @media (max-width: 576px){
@@ -50,6 +50,14 @@ header{
 	
 	.header figure img:nth-child(2){
 		grid-column : span 2;
+	}
+	
+	.header > div{
+		text-align: center;
+	}
+	
+	#map{
+		height: 100vh;
 	}
 	
 }
