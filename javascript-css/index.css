@@ -37,7 +37,7 @@ html {
 }
 
 #map{
-	height: 70vh;
+	height: 80vh;
 	background: red;
 }
 
@@ -67,7 +67,7 @@ header{
 	align-items: center;
 }
 
-@media (min-width: 576px){
+@media (pointer: fine){
 	#btn{
 		display: none;
 	}
