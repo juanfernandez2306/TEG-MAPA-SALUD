@@ -85,25 +85,12 @@ header{
 }
 
 .hiddenSidebar{
-	width: 0px;
-	z-index: 1;
+	display: none;
 }
 
 .showSidebar{
 	width: 400px;
-	max-width: 400px;
 	z-index: 2;
-}
-
-.sidebar{
-	height: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-color: white;
-	overflow-x: hidden;
-	transition: 0.5s;
-	padding: var(--gapContainer);
 	
 	display: grid;
 	grid-template-columns: 1fr;
@@ -115,6 +102,18 @@ header{
 							- (2 * var(--gapSidebar))
 							) 
 						var(--maxSizeSidebarFooter);
+	
+}
+
+.sidebar{
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: white;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding: var(--gapContainer);
 	
 }
 
