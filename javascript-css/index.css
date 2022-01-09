@@ -147,7 +147,7 @@ header{
 }
 
 .translate-background{
-	animation: translate-background 2s;
+	animation: translate-background 3s;
 }
 
 @media (pointer: fine){

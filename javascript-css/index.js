@@ -6,10 +6,10 @@ function closeSidebar(e){
 	btn.disabled = true;
 	sidebar.classList.add('translate-background');
 	setTimeout(function(){
-		sidebar.classList.remove('translate-background');
 		sidebar.classList.remove('showSidebar');
 		sidebar.classList.add('hiddenSidebar');
 		btn.removeAttribute('disabled');
+		sidebar.classList.remove('translate-background');
 	}, 2000);
 }
 
