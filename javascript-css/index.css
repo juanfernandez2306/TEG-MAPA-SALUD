@@ -46,6 +46,7 @@ header{
 }
 
 .container{
+	margin-left: 300px;
 	width: 90vw;
 	max-width: 1140px;
 	margin: 1.2rem auto;
@@ -66,6 +67,46 @@ header{
 	grid-template-columns: 2fr 1fr;
 	align-items: center;
 }
+
+.hiddenSidebar{
+	width: 0px;
+	z-index: 1;
+}
+
+.showSidebar{
+	width: 300px;
+	z-index: 2;
+}
+
+.sidebar{
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: white;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding: 1.2rem;
+}
+
+.sidebar .title-Sidebar{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: .2rem solid var(--myColor);
+}
+
+.sidebar .buttonClose{
+	border-top: .2rem solid var(--myColor);
+}
+
+.closebtn{
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: black;
+}
+
 
 @media (pointer: fine){
 	#btn{
