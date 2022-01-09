@@ -137,6 +137,18 @@ header{
 	color: black;
 }
 
+@keyframes translate-background{
+	0% {transform: translate(-100px, 0);}
+	30% {transform: translate(-150px, 0);}
+	50% {transform: translate(-250px, 0);}
+	80% {transform: translate(-350px, 0);}
+	100% {transform: translate(-400px, 0);}
+	
+}
+
+.translate-background{
+	animation: translate-background 2s;
+}
 
 @media (pointer: fine){
 	#btn{
@@ -149,12 +161,12 @@ header{
 		grid-template-columns: minmax(300px, 1fr);
 	}
 	
-	.header figure{
+	.figure{
 		display: grid;
 		grid-gap: .5rem;
-		grid-auto-flow: dense;
-		grid-template-columns: 1f 1fr;
+		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr 1fr;
+		grid-auto-flow: dense;
 		justify-items: center;
 	}
 	
