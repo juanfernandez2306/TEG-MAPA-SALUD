@@ -10,6 +10,11 @@ html {
 
 :root{
 	--myColor: rgb(83,144,201);
+	--paddingContainer : .4rem;
+	--gapContainer : 1.2rem;
+	--maxSizeSidebarHeader : 2rem;
+	--maxSizeSidebarFooter: 5rem;
+	--gapSidebar: .3rem;
 }
 
 .bordes{
@@ -50,10 +55,10 @@ header{
 	width: 90vw;
 	max-width: 1140px;
 	margin: 1.2rem auto;
-	padding: .4rem;
+	padding: var(--paddingContainer);
 	
 	display: grid;
-	grid-gap: 1.2rem;
+	grid-gap: var(--gapContainer);
 	grid-template-columns: 1fr;
 }
 
@@ -86,7 +91,19 @@ header{
 	background-color: white;
 	overflow-x: hidden;
 	transition: 0.5s;
-	padding: 1.2rem;
+	padding: var(--gapContainer);
+	
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: var(--gapSidebar);
+	grid-template-rows: var(--maxSizeSidebarHeader) 
+						calc(100vh 
+							- var(--maxSizeSidebarFooter) 
+							- var(--maxSizeSidebarHeader) 
+							- (2 * var(--gapSidebar))
+							) 
+						var(--maxSizeSidebarFooter);
+	
 }
 
 .sidebar .title-Sidebar{
@@ -99,6 +116,7 @@ header{
 
 .sidebar .buttonClose{
 	border-top: .2rem solid var(--myColor);
+	text-align: right;
 }
 
 .closebtn{
@@ -138,6 +156,10 @@ header{
 	
 	#map{
 		height: 100vh;
+	}
+	
+	.showSidebar{
+		width: calc(100vw - var(--gapContainer) - 2*(var(--paddingContainer)));
 	}
 	
 }
