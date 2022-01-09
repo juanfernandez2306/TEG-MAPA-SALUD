@@ -33,6 +33,17 @@ html {
 	border-radius: .2rem;
 }
 
+.btn-close{
+	background: var(--myColor);
+	padding: .6rem;
+	color: white;
+	font-size: 1rem;
+}
+
+.btn-close i{
+	margin-right: .5rem;
+}
+
 .btn i:first-child{
 	margin-right: .5rem;
 }
@@ -79,7 +90,8 @@ header{
 }
 
 .showSidebar{
-	width: 300px;
+	width: 400px;
+	max-width: 400px;
 	z-index: 2;
 }
 
@@ -117,6 +129,7 @@ header{
 .sidebar .buttonClose{
 	border-top: .2rem solid var(--myColor);
 	text-align: right;
+	padding-top: .2rem;
 }
 
 .closebtn{
