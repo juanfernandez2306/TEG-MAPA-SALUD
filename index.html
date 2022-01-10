@@ -43,36 +43,27 @@
 	-->
 	
 	
-	<link rel="stylesheet" href="../complementos/fontawesome/fontawesome/all.min.css">
+	<!-- <link rel="stylesheet" href="../complementos/fontawesome/fontawesome/all.min.css"> -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<link rel="stylesheet" href="javascript-css/index.css">
 	<script src="javascript-css/index.js"></script>
 	
 	</head>
 	<body>
-		<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-			<symbol id="gmail" viewBox="52 42 88 66">
-				<path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"></path>
-				<path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"></path>
-				<path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"></path>
-				<path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"></path>
-				<path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"></path>
-			</symbol>
-			<symbol id="twitter" viewBox="0 0 512 512">
-				<path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" fill="#2aa9e0"></path>
-			</symbol>
-		</svg>
 		<!-- 
 		https://i.ibb.co/J7wFTm8/LUZ.jpg
 		https://i.ibb.co/N1TXJLX/postgrado.png
 		https://i.ibb.co/bdhnd2z/geodesia-LUZ.png
 		-->
-		<div class="sidebar showSidebar">
+		<div class="sidebar hiddenSidebar">
 			<div class="title-Sidebar">
 				<aside>
 					<h1>titulo</h1>
 				</aside>
 				<aside>
-					<a class="closebtn">&times;</a>
+					<a class="closebtn">
+						<i class="fas fa-times"></i>
+					</a>
 				</aside>
 			</div>
 			<div id="sidebarContent">
@@ -101,8 +92,8 @@
 					<i class="fas fa-arrow-down"></i>
 				</a>
 			</section>
-			<section id="map"></section>
-			<footer>
+			<section id="map" class="bordes"></section>
+			<footer class="bordes">
 				<div>
 					<p>Universidad del Zulia - Postgrado de Ingeniería - Facultad de Ingeniería</p>
 					<p>Programa de Postgrado en Catastro y Avalúo Inmobiliario</p>
@@ -111,9 +102,16 @@
 						Sistema de información geográfico para la administración de la red de Atención Primaria de Salud del Municipio Mara, Estado Zulia
 					</a>
 				</div>
+				<div class="logos">
+					<span>&copy; 2022 Juan Fernandez</span>
+					<a href="mailto:juanfernandez2306@gmail.com?Subject=Mapa%20github">
+						<i class="fas fa-email"></i>
+					</a>
+					<a href="https://twitter.com/juancho_2306">
+						<i class="fas fa-twitter"></i>
+					</a>
+				</div>
 			</footer>
-	
-
 		</div>
 	</body>
 </html>
