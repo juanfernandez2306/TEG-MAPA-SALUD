@@ -50,7 +50,12 @@ function init(){
 		getFetch('https://i.ibb.co/8xGz1Xz/HOSPITAL.png', 'img'),
 		getFetch('https://i.ibb.co/D7SwCJW/CPT1.png', 'img'),
 		getFetch('https://i.ibb.co/QY879dr/CPT2.png', 'img'),
-		getFetch('https://i.ibb.co/tJM3Ps2/RAES.png', 'img')
+		getFetch('https://i.ibb.co/tJM3Ps2/RAES.png', 'img'),
+		getFetch('capas/asic.json', 'json'),
+		getFetch('capas/cdi.json', 'json'),
+		getFetch('capas/hospitales.json', 'json'),
+		getFetch('capas/racs.json', 'json'),
+		getFetch('capas/raes.json', 'json')
 	])
 	.then(objArray => {
 		console.log(objArray);
