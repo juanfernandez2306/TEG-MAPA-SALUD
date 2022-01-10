@@ -166,6 +166,11 @@ footer div p{
 	align-items: center;
 }
 
+.logos span{
+	color: #777;
+	font-size: 1rem;
+}
+
 .logos div a{
 	text-decoration: none;
 }
