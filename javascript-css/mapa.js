@@ -1,5 +1,5 @@
 function createDiv(urlLogo, props){
-	const html = `
+	var html = `
 		<div class="cuerpo">
 			<div class="encabezadoImg">
 				<img src="${urlLogo}" width="40px">
@@ -17,8 +17,8 @@ function createDiv(urlLogo, props){
 			arrayMun = String(props.municipios).split(','),
 			asic = props.asic;
 			
-		const nameMun = 'MUNICIPIO';
-		const nameParr = 'PARROQUIA';
+		var nameMun = 'MUNICIPIO';
+		var nameParr = 'PARROQUIA';
 			
 		if(arrayMun.length > 1){
 			nameMun += 'S';
@@ -52,7 +52,79 @@ function createDiv(urlLogo, props){
 	
 }
 
-function createMap(){
+function createMap(JSON_ASIC, URL_IMG_ASIC){
+	const map = L.map('map', {
+		center: [10.90847, -72.08446],
+		zoom: 10,
+		minZoom: 10,
+		maxZoom: 18
+	});
+	
+	function style(feature) {
+		return {
+			weight: 2,
+			opacity: 1,
+			color: 'white',
+			dashArray: '3',
+			fillOpacity: 0.1,
+			fillColor: '#ff00ffff'
+		};
+	}
+	
+	var info = L.control();
+
+	info.onAdd = function(map){
+		this._div = L.DomUtil.create('div', 'info');
+		this.update();
+		return this._div;
+	}
+	
+	info.update = function(props){
+		var html = createDiv(URL_IMG_ASIC, props);
+		
+		this._div.innerHTML = html;
+	}
+
+	info.addTo(map);
+
+	function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 5,
+			color: '#666',
+			dashArray: '',
+			fillOpacity: 0.1
+			});
+
+		info.update(layer.feature.properties);
+	};
+
+	var geojson;
+
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		info.update();
+	}
+
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer){
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight
+		});
+	}
+
+	geojson = L.geoJson(JSON_ASIC , {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);
+}
+
+function createMaprespaldo(){
     const map = L.map('map', {
 		center: [10.90847, -72.08446],
 		zoom: 10,
@@ -63,8 +135,6 @@ function createMap(){
 			title:"Show me the fullscreen !",
 			titleCancel:"Exit fullscreen mode"}
 	});
-	
-	/*
 	
 	// detect fullscreen toggling
 	map.on('enterFullscreen', function(){
@@ -96,7 +166,6 @@ function createMap(){
 		"Mapa base de OpenStreetMap" : osm,
 		"Mapa base de Google Satelite" : hybridMutant};
 	
-	*/
 	//Agregar CONTROL para mostrar la información de la capa de  ASIC
 	var info = L.control();
 
@@ -283,6 +352,4 @@ function createMap(){
 			return false;
 			
 		});
-		
-		
 }

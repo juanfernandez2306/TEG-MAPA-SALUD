@@ -1,3 +1,4 @@
+
 function closeSidebar(e){
 	e.preventDefault();
 	var btn = e.target;
@@ -63,6 +64,8 @@ function init(){
 		URL_IMG_CPT1, URL_IMG_CPT2, URL_IMG_RAES,
 		JSON_ASIC, JSON_CDI, JSON_HOSPITAL,
 		JSON_RACS, JSON_RAES] = objArray;
+		
+		createMap(JSON_ASIC, URL_IMG_ASIC);
 		
 	})
 	.catch((error) => {
