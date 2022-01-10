@@ -158,8 +158,25 @@ footer div p{
 	padding-bottom: .2rem;
 }
 
-.logos a svg{
-	width: 1.2rem;
+.logos{
+	padding-top: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logos div a{
+	text-decoration: none;
+}
+
+.logos div a i{
+	color: var(--myColor);
+	font-size: 2rem;
+}
+
+.logos div a i:first-child{
+	margin-left: .8rem;
 }
 
 @media (pointer: fine){
