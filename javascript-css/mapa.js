@@ -1,10 +1,10 @@
 function createDiv(urlLogo, props){
 	var html = `
-		<div class="cuerpo">
-			<div class="encabezadoImg">
+		<div class="headerInfoMap">
+			<div>
 				<img src="${urlLogo}" width="40px">
 			</div>
-			<div class="encabezado">
+			<div>
 				<h4>
 					AREA DE SALUD INTEGRAL COMUNITARIO (ASIC)
 				</h4>
@@ -32,20 +32,29 @@ function createDiv(urlLogo, props){
 				nameParr += 'S';
 			}
 			
-			var info = `<strong>${nameParr}</strong>: ${textParr}<br>'`;
+			var info = `<p>
+				<strong>${nameParr}</strong>: ${textParr}<br>
+			</p>`;
 		}else{
 			var info = '';
 		}
 		
 		html += `
-			<div class="cuerpo"><b><center>${asic}</b>
-				<strong>${nameMun}</strong>: ${textMun}<br>
+			<div class="bodyInfoMap">
+				<p>
+					<b>${asic}</b>
+				</p>
+				<p>
+					<strong>${nameMun}</strong>: ${textMun}
+				</p>
 				${info}
 			</div>
 		`;
 		
 	}else{
-		html += '<div class="cuerpo">DESPLACE EL CURSOR SOBRE UN ASIC</div>'
+		html += `<div class="bodyInfoMap">
+			<p>DESPLACE EL CURSOR SOBRE UN ASIC</p>
+		</div>`;
 	}
 	
 	return html;

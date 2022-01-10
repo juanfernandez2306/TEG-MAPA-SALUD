@@ -184,6 +184,27 @@ footer div p{
 	margin-left: .8rem;
 }
 
+.info{
+	width: 350px;
+	padding: .8rem;
+	border-radius: .2rem;
+	background: white;
+}
+
+.headerInfoMap{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.bodyInfoMap p:first-child,
+.headerInfoMap div h4{
+	text-align: center;
+	font-size: .8rem;
+	font-weight: bold;
+}
+
 @media (pointer: fine){
 	#btn{
 		display: none;
