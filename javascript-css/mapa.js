@@ -1,5 +1,59 @@
-document.addEventListener('DOMContentLoaded', function (){
-    var map = L.map('map', {
+function createDiv(urlLogo, props){
+	const html = `
+		<div class="cuerpo">
+			<div class="encabezadoImg">
+				<img src="${urlLogo}" width="40px">
+			</div>
+			<div class="encabezado">
+				<h4>
+					AREA DE SALUD INTEGRAL COMUNITARIO (ASIC)
+				</h4>
+			</div>
+		</div>
+	`;
+	
+	if (props){
+		var textMun = String(props.municipios).replace(',', ' - '),
+			arrayMun = String(props.municipios).split(','),
+			asic = props.asic;
+			
+		const nameMun = 'MUNICIPIO';
+		const nameParr = 'PARROQUIA';
+			
+		if(arrayMun.length > 1){
+			nameMun += 'S';
+		}
+		
+		if (props.cobertura_mun != '1'){
+			var arrayParr = String(props.parr).split(','),
+				textParr = arrayParr.join(' - ');
+				
+			if(arrayParr.length > 1){
+				nameParr += 'S';
+			}
+			
+			var info = `<strong>${nameParr}</strong>: ${textParr}<br>'`;
+		}else{
+			var info = '';
+		}
+		
+		html += `
+			<div class="cuerpo"><b><center>${asic}</b>
+				<strong>${nameMun}</strong>: ${textMun}<br>
+				${info}
+			</div>
+		`;
+		
+	}else{
+		html += '<div class="cuerpo">DESPLACE EL CURSOR SOBRE UN ASIC</div>'
+	}
+	
+	return html;
+	
+}
+
+function createMap(){
+    const map = L.map('map', {
 		center: [10.90847, -72.08446],
 		zoom: 10,
 		minZoom: 10,
@@ -10,6 +64,8 @@ document.addEventListener('DOMContentLoaded', function (){
 			titleCancel:"Exit fullscreen mode"}
 	});
 	
+	/*
+	
 	// detect fullscreen toggling
 	map.on('enterFullscreen', function(){
 		if(window.console) window.console.log('enterFullscreen');
@@ -18,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function (){
 	map.on('exitFullscreen', function(){
 		if(window.console) window.console.log('exitFullscreen');
 		});
+	
 	
 	//Mapa Base de OpenStreetMap
 	var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -38,7 +95,8 @@ document.addEventListener('DOMContentLoaded', function (){
 	var mapabase = {
 		"Mapa base de OpenStreetMap" : osm,
 		"Mapa base de Google Satelite" : hybridMutant};
-		
+	
+	*/
 	//Agregar CONTROL para mostrar la información de la capa de  ASIC
 	var info = L.control();
 
@@ -67,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function (){
 			+ '<br><strong>MUNICIPIO</strong>: ' + String(props.municipios).replace(',', ' - ') + '<br>'
 			+ seleccionarParroquias(props.cobertura_mun, props.parr) + '</div>'
 			: '<div class="cuerpo"><center>DESPLACE EL CURSOR SOBRE UN ASIC</center></div>');
-			};
+		};
 
 		info.addTo(map);
 		
@@ -227,4 +285,4 @@ document.addEventListener('DOMContentLoaded', function (){
 		});
 		
 		
-});
+}
