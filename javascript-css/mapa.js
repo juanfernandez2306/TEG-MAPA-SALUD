@@ -61,7 +61,13 @@ function createDiv(urlLogo, props){
 	
 }
 
-function createMap(JSON_ASIC, URL_IMG_ASIC){
+function createMap(objArrayResponse){
+	
+	const [URL_IMG_LUZ, URL_IMG_POSTGRADO, URL_IMG_GEODESIA,
+		URL_IMG_ASIC, URL_IMG_CDI, URL_IMG_HOSPITAL,
+		URL_IMG_CPT1, URL_IMG_CPT2, URL_IMG_RAES,
+		JSON_ASIC, JSON_CDI, JSON_HOSPITAL,
+		JSON_RACS, JSON_RAES] = objArrayResponse;
 	
 	const initial_coordinates = [10.90847, -72.08446];
 	
@@ -71,6 +77,8 @@ function createMap(JSON_ASIC, URL_IMG_ASIC){
 		minZoom: 10,
 		maxZoom: 18
 	});
+	
+	var escala = L.control.scale({imperial: false}).addTo(map);
 	
 	function style(feature) {
 		return {
@@ -127,6 +135,76 @@ function createMap(JSON_ASIC, URL_IMG_ASIC){
 			mouseout: resetHighlight
 		});
 	}
+	
+	var customOptions = {
+			'maxWidth': '700px',
+			'maxHeight': '400px',
+			'className' : 'custom'
+		};
+		
+	var iconoCDI = L.icon({
+			iconUrl: URL_IMG_CDI, 
+			iconSize: [30, 30]
+		}),
+		iconoHospital = L.icon({
+			iconUrl: URL_IMG_HOSPITAL, 
+			iconSize: [35, 35]
+		}),
+		iconoAmbulatorio = L.icon({
+			iconUrl: URL_IMG_CPT1, 
+			iconSize: [25, 25]
+		}),
+		iconoCMP = L.icon({
+			iconUrl: URL_IMG_CPT2, 
+			iconSize: [25, 25]
+		}),
+		iconoRAES = L.icon({
+			iconUrl: URL_IMG_RAES, 
+			iconSize: [30, 30]
+		});
+		
+	function simblogiaCDI(feature, latlng){
+		var icono = L.marker(latlng,{icon: iconoCDI});
+			icono.bindPopup(popupCDI(feature), customOptions);
+		return icono;
+	};
+	
+	function simblogiaHospital(feature, latlng){
+		var icono = L.marker(latlng,{icon: iconoHospital});
+			icono.bindPopup(popupHospitales(feature), customOptions)
+		return icono;
+	};
+	
+	function filtroCMP(feature, layer){
+		return feature.properties.tipo == 'CONSULTORIO MEDICO POPULAR'
+	};
+			
+	function filtroAMB(feature, layer){
+		return feature.properties.tipo != 'CONSULTORIO MEDICO POPULAR'
+	};
+	
+	function simblogiaRacs(feature, latlng){
+		if (feature.properties.tipo != "CONSULTORIO MEDICO POPULAR"){
+			var icono = L.marker(latlng,{icon: iconoAmbulatorio});
+		}
+		else{
+			var icono = L.marker(latlng,{icon: iconoCMP});
+		}
+		icono.bindPopup(popupRacs(feature), customOptions);
+		return icono;
+	};
+	
+	function simblogiaRAES(feature, latlng){
+		var icono = L.marker(latlng,{icon: iconoRAES});
+			icono.bindPopup(popupRaes(feature), customOptions);
+		return icono;
+	};
+	
+	var ptsCDI = L.geoJson(JSON_CDI, { pointToLayer: simblogiaCDI }),
+		ptsHospitales = L.geoJson(JSON_HOSPITAL, { pointToLayer: simblogiaHospital }),
+		ptsRacsCMP = L.geoJson(JSON_RACS, { filter: filtroCMP, pointToLayer: simblogiaRacs }),
+		ptsRacsAMB = L.geoJson(JSON_RACS, { filter: filtroAMB, pointToLayer: simblogiaRacs }),
+		ptsRAES = L.geoJson(JSON_RAES, { pointToLayer: simblogiaRAES });
 
 	function addInfoLayer(){
 		

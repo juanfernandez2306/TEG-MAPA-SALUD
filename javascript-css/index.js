@@ -58,14 +58,9 @@ function init(){
 		getFetch('capas/racs.json', 'json'),
 		getFetch('capas/raes.json', 'json')
 	])
-	.then(objArray => {
-		const [URL_IMG_LUZ, URL_IMG_POSTGRADO, URL_IMG_GEODESIA,
-		URL_IMG_ASIC, URL_IMG_CDI, URL_IMG_HOSPITAL,
-		URL_IMG_CPT1, URL_IMG_CPT2, URL_IMG_RAES,
-		JSON_ASIC, JSON_CDI, JSON_HOSPITAL,
-		JSON_RACS, JSON_RAES] = objArray;
+	.then(objArrayResponse => {
 		
-		createMap(JSON_ASIC, URL_IMG_ASIC);
+		createMap(objArrayResponse);
 		
 	})
 	.catch((error) => {
