@@ -205,6 +205,11 @@ footer div p{
 	font-weight: bold;
 }
 
+.bodyInfoMap p:nth-child(2),
+.bodyInfoMap p:nth-child(3){
+	font-size: .8rem;
+}
+
 @media (pointer: fine){
 	#btn{
 		display: none;

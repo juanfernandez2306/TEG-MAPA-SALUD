@@ -62,8 +62,11 @@ function createDiv(urlLogo, props){
 }
 
 function createMap(JSON_ASIC, URL_IMG_ASIC){
-	const map = L.map('map', {
-		center: [10.90847, -72.08446],
+	
+	const initial_coordinates = [10.90847, -72.08446];
+	
+	var map = L.map('map', {
+		center: initial_coordinates,
 		zoom: 10,
 		minZoom: 10,
 		maxZoom: 18
@@ -93,8 +96,6 @@ function createMap(JSON_ASIC, URL_IMG_ASIC){
 		
 		this._div.innerHTML = html;
 	}
-
-	info.addTo(map);
 
 	function highlightFeature(e) {
 		var layer = e.target;
@@ -127,10 +128,44 @@ function createMap(JSON_ASIC, URL_IMG_ASIC){
 		});
 	}
 
-	geojson = L.geoJson(JSON_ASIC , {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);
+	function addInfoLayer(){
+		
+		if(map.hasLayer(geojson)){
+			map.removeLayer(geojson);
+		}
+		
+		const mediaquery = "(max-width: 576px) or (pointer: coarse)";
+		
+		if(window.matchMedia(mediaquery).matches){
+			
+			map.removeControl(info);
+			
+			geojson = L.geoJson(JSON_ASIC , {
+				style: style
+			});
+			
+			map.setZoom(9);
+			map.setMinZoom(9);
+			map.setView(initial_coordinates, 9);
+			
+		}else{
+			
+			info.addTo(map);
+			
+			geojson = L.geoJson(JSON_ASIC , {
+				style: style,
+				onEachFeature: onEachFeature
+			});
+			
+		}
+		
+		geojson.addTo(map)
+		
+	}
+	
+	addInfoLayer();
+	
+	window.addEventListener('resize', addInfoLayer, false);
 }
 
 function createMaprespaldo(){
