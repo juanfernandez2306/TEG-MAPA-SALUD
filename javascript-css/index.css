@@ -157,7 +157,7 @@ header{
 
 @keyframes translate-background-show{
 	0% {
-		clip-path: ellipse(100% 40% at 0% 0%);
+		clip-path: ellipse(30% 40% at 0% 0%);
 	}
 	40% {
 		clip-path: ellipse(100% 60% at 0% 0%);
