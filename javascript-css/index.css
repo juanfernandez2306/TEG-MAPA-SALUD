@@ -89,7 +89,7 @@ header{
 
 .showSidebar{
 	width: 400px;
-	z-index: 2;
+	z-index: 999999;
 	
 	display: grid;
 	grid-template-columns: 1fr;
@@ -145,8 +145,37 @@ header{
 	
 }
 
+/*
+@keyframes translate-background-show{
+	0% {transform: translate(100px, 0);}
+	30% {transform: translate(150px, 0);}
+	50% {transform: translate(250px, 0);}
+	80% {transform: translate(280px, 0);}
+	100% {transform: translate(300px, 0);}
+}
+*/
+
+@keyframes translate-background-show{
+	0% {
+		clip-path: ellipse(100% 40% at 0% 0%);
+	}
+	40% {
+		clip-path: ellipse(100% 60% at 0% 0%);
+	}
+	6% {
+		clip-path: ellipse(100% 80% at 0% 0%);
+	}
+	100% {
+		clip-path: ellipse(100% 100% at 0% 0%);
+	}
+}
+
 .translate-background{
-	animation: translate-background 3s;
+	animation: translate-background 2s;
+}
+
+.translate-background-show{
+	animation: translate-background-show 2s;
 }
 
 footer{
@@ -215,6 +244,32 @@ footer div p{
 		display: none;
 	}
 }
+
+.info {
+	font-family: sans-serif;
+	max-height: 250px;
+	padding: 6px 8px;
+	font-size: 1.2rem;
+	background: white;
+	background: rgba(255,255,255,0.8);
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	border-radius: 5px;
+	line-height: 1.2em;
+}
+
+.ocultar {
+	display: none;
+}
+
+.active {
+	background: #009cdeff;
+}
+
+.custom .leaflet-popup-content-wrapper nav ul.tabs {
+	background-color: black;
+	list-style: none;
+}
+	
 
 @media (max-width: 576px){
 	.container .header{

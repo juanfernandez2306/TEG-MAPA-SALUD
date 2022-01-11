@@ -137,10 +137,15 @@ function createMap(objArrayResponse){
 	}
 	
 	var customOptions = {
-			'maxWidth': '700px',
+			'Width': '400px',
 			'maxHeight': '400px',
 			'className' : 'custom'
 		};
+		
+	function consultToFeaturePoint(e){
+		var props = e.target.feature.properties;
+		console.log(props);
+	}
 		
 	var iconoCDI = L.icon({
 			iconUrl: URL_IMG_CDI, 
@@ -165,13 +170,11 @@ function createMap(objArrayResponse){
 		
 	function simblogiaCDI(feature, latlng){
 		var icono = L.marker(latlng,{icon: iconoCDI});
-			icono.bindPopup(popupCDI(feature), customOptions);
 		return icono;
 	};
 	
 	function simblogiaHospital(feature, latlng){
 		var icono = L.marker(latlng,{icon: iconoHospital});
-			icono.bindPopup(popupHospitales(feature), customOptions)
 		return icono;
 	};
 	
@@ -190,21 +193,71 @@ function createMap(objArrayResponse){
 		else{
 			var icono = L.marker(latlng,{icon: iconoCMP});
 		}
-		icono.bindPopup(popupRacs(feature), customOptions);
 		return icono;
 	};
 	
 	function simblogiaRAES(feature, latlng){
 		var icono = L.marker(latlng,{icon: iconoRAES});
-			icono.bindPopup(popupRaes(feature), customOptions);
 		return icono;
 	};
 	
-	var ptsCDI = L.geoJson(JSON_CDI, { pointToLayer: simblogiaCDI }),
-		ptsHospitales = L.geoJson(JSON_HOSPITAL, { pointToLayer: simblogiaHospital }),
-		ptsRacsCMP = L.geoJson(JSON_RACS, { filter: filtroCMP, pointToLayer: simblogiaRacs }),
-		ptsRacsAMB = L.geoJson(JSON_RACS, { filter: filtroAMB, pointToLayer: simblogiaRacs }),
-		ptsRAES = L.geoJson(JSON_RAES, { pointToLayer: simblogiaRAES });
+	function onEachFeature(feature, layer) {
+		layer.on('click', function(e){
+			var props = e.target.feature.properties,
+				sidebar = document.querySelector('.sidebar');
+				
+			sidebar.classList.remove('hiddenSidebar');
+			sidebar.classList.add('showSidebar');
+			sidebar.classList.add('translate-background-show');
+			setTimeout(function(){
+				sidebar.classList.remove('translate-background-show');
+			}, 2000);
+			
+			console.log(props);
+		});
+	}
+	
+	var ptsCDI = L.geoJson(JSON_CDI, 
+			{ pointToLayer: simblogiaCDI ,
+			onEachFeature: onEachFeature}
+		),
+		ptsHospitales = L.geoJson(JSON_HOSPITAL, 
+			{ pointToLayer: simblogiaHospital ,
+			onEachFeature: onEachFeature}
+		),
+		ptsRacsCMP = L.geoJson(JSON_RACS, 
+			{ filter: filtroCMP, pointToLayer: simblogiaRacs ,
+			onEachFeature: onEachFeature}
+		),
+		ptsRacsAMB = L.geoJson(JSON_RACS, 
+			{ filter: filtroAMB, pointToLayer: simblogiaRacs,
+			onEachFeature: onEachFeature}
+		),
+		ptsRAES = L.geoJson(JSON_RAES, 
+			{ pointToLayer: simblogiaRAES,
+			onEachFeature: onEachFeature}
+		);
+		
+	var parentGroup = L.markerClusterGroup();
+		
+	mySubGroup = L.featureGroup.subGroup(parentGroup, [ptsCDI]);
+	mySubGroup1 = L.featureGroup.subGroup(parentGroup, [ptsHospitales]);
+	mySubGroup2 = L.featureGroup.subGroup(parentGroup, [ptsRacsCMP]);
+	mySubGroup3 = L.featureGroup.subGroup(parentGroup, [ptsRacsAMB]);
+	mySubGroup4 = L.featureGroup.subGroup(parentGroup, [ptsRAES]);
+	
+	control = L.control.layers(null, null, { collapsed: true,  position: 'topright'}).addTo(map);
+	parentGroup.addTo(map);
+	control.addOverlay(mySubGroup2, `<img src="${URL_IMG_CPT1}" width="25"/><b>CONSULTORIO MÉDICO POPULAR</b>`);
+	control.addOverlay(mySubGroup3, `<img src="${URL_IMG_CPT2}" width="25"/><b>AMBULATORIO RED COMUNAL</b>`);
+	control.addOverlay(mySubGroup4, `<img src="${URL_IMG_RAES}" width="25"/><b>AMBULATORIO RED ESPECIALIZADA</b>`);
+	control.addOverlay(mySubGroup, `<img src="${URL_IMG_CDI}" width="25"/><b>CENTRO DE DIAGNOSTICO INTEGRAL</b>`);
+	control.addOverlay(mySubGroup1, `<img src="${URL_IMG_HOSPITAL}" width="35"/><b>HOSPITALES</b>`);
+	mySubGroup.addTo(map);
+	mySubGroup1.addTo(map);
+	mySubGroup2.addTo(map);
+	mySubGroup3.addTo(map);
+	mySubGroup4.addTo(map);
 
 	function addInfoLayer(){
 		
