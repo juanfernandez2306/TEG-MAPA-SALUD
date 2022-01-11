@@ -136,7 +136,7 @@ header{
 	color: black;
 }
 
-@keyframes translate-background{
+@keyframes clip-path-hidden{
 	0% {
 		clip-path: ellipse(100% 100% at 0% 0%);
 	}
@@ -166,12 +166,11 @@ header{
 		clip-path: ellipse(100% 100% at 0% 0%);
 	}
 }
-
-.translate-background{
-	animation: translate-background 2s;
+.clip-path-hidden{
+	animation: clip-path-hidden 2s;
 }
 
-.translate-background-show{
+.clip-path-show{
 	animation: clip-path-show 2s;
 }
 

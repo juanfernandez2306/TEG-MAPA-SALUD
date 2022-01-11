@@ -5,12 +5,12 @@ function closeSidebar(e){
 	const sidebar = document.querySelector('div.sidebar');
 	
 	btn.disabled = true;
-	sidebar.classList.add('translate-background');
+	sidebar.classList.add('clip-path-hidden');
 	setTimeout(function(){
 		sidebar.classList.remove('showSidebar');
 		sidebar.classList.add('hiddenSidebar');
 		btn.removeAttribute('disabled');
-		sidebar.classList.remove('translate-background');
+		sidebar.classList.remove('clip-path-hidden');
 	}, 2000);
 }
 

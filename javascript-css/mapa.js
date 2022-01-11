@@ -201,16 +201,16 @@ function createMap(objArrayResponse){
 		return icono;
 	};
 	
-	function onEachFeature(feature, layer) {
+	function onEachFeaturePoint(feature, layer) {
 		layer.on('click', function(e){
 			var props = e.target.feature.properties,
 				sidebar = document.querySelector('.sidebar');
 				
 			sidebar.classList.remove('hiddenSidebar');
 			sidebar.classList.add('showSidebar');
-			sidebar.classList.add('translate-background-show');
+			sidebar.classList.add('clip-path-show');
 			setTimeout(function(){
-				sidebar.classList.remove('translate-background-show');
+				sidebar.classList.remove('clip-path-show');
 			}, 2000);
 			
 			console.log(props);
@@ -219,23 +219,23 @@ function createMap(objArrayResponse){
 	
 	var ptsCDI = L.geoJson(JSON_CDI, 
 			{ pointToLayer: simblogiaCDI ,
-			onEachFeature: onEachFeature}
+			onEachFeature: onEachFeaturePoint}
 		),
 		ptsHospitales = L.geoJson(JSON_HOSPITAL, 
 			{ pointToLayer: simblogiaHospital ,
-			onEachFeature: onEachFeature}
+			onEachFeature: onEachFeaturePoint}
 		),
 		ptsRacsCMP = L.geoJson(JSON_RACS, 
 			{ filter: filtroCMP, pointToLayer: simblogiaRacs ,
-			onEachFeature: onEachFeature}
+			onEachFeature: onEachFeaturePoint}
 		),
 		ptsRacsAMB = L.geoJson(JSON_RACS, 
 			{ filter: filtroAMB, pointToLayer: simblogiaRacs,
-			onEachFeature: onEachFeature}
+			onEachFeature: onEachFeaturePoint}
 		),
 		ptsRAES = L.geoJson(JSON_RAES, 
 			{ pointToLayer: simblogiaRAES,
-			onEachFeature: onEachFeature}
+			onEachFeature: onEachFeaturePoint}
 		);
 		
 	var parentGroup = L.markerClusterGroup();
