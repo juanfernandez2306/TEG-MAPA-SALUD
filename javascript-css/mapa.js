@@ -188,7 +188,20 @@ function createMap(objArrayResponse){
 			sidebarContent.innerHTML = html;
 			
 			if(props.url_foto != null){
-				console.log(props.url_foto);
+				
+				Promise.all([
+					getFetch(props.url_foto, 'img')
+				]).then(objArrayResponse => {
+					var urlImg = objArrayResponse[0],
+						divImg = `
+						<div class=''>
+							<img class='estab' src='${urlImg}' alt='fachada'>
+						</div>`;
+						
+					sidebarContent.innerHTML += divImg;
+				})
+				
+				
 			}
 			
 			setTimeout(function(){
