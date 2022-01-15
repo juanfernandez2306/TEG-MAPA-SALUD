@@ -108,7 +108,8 @@ function createMap(objArrayResponse){
 		center: initial_coordinates,
 		zoom: 10,
 		minZoom: 10,
-		maxZoom: 18
+		maxZoom: 18,
+		gestureHandling: true
 	});
 	
 	var escala = L.control.scale({imperial: false}).addTo(map);
