@@ -1,6 +1,7 @@
 function createTableInfo(props){
 	var html = `
 		<table class="">
+			<caption>Establecimiento de Salud</caption>
 			<tr>
 				<th>NOMBRE</th>
 				<td>${props.nombre}</td>
@@ -164,7 +165,8 @@ function createMap(objArrayResponse){
 	function onEachFeature(feature, layer){
 		layer.on({
 			mouseover: highlightFeature,
-			mouseout: resetHighlight
+			mouseout: resetHighlight,
+			click: zoomToFeature
 		});
 	}
 		
@@ -188,20 +190,12 @@ function createMap(objArrayResponse){
 			sidebarContent.innerHTML = html;
 			
 			if(props.url_foto != null){
+				var divImg = `
+				<div class='container-img'>
+					<img src='${props.url_foto}' alt='fachada'>
+				</div>`;
 				
-				Promise.all([
-					getFetch(props.url_foto, 'img')
-				]).then(objArrayResponse => {
-					var urlImg = objArrayResponse[0],
-						divImg = `
-						<div class=''>
-							<img class='estab' src='${urlImg}' alt='fachada'>
-						</div>`;
-						
-					sidebarContent.innerHTML += divImg;
-				})
-				
-				
+				sidebarContent.innerHTML += divImg;
 			}
 			
 			setTimeout(function(){

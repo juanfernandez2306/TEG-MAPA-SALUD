@@ -99,7 +99,7 @@ header{
 							- var(--maxSizeSidebarFooter) 
 							- var(--maxSizeSidebarHeader) 
 							- (2 * var(--gapSidebar))
-							) 
+							)
 						var(--maxSizeSidebarFooter);
 	
 }
@@ -116,6 +116,10 @@ header{
 	
 }
 
+#sidebarContent{
+	overflow: scroll;
+}
+
 .sidebar .title-Sidebar{
 	display: flex;
 	flex-direction: row;
@@ -128,6 +132,11 @@ header{
 	border-top: .2rem solid var(--myColor);
 	text-align: right;
 	padding-top: .2rem;
+}
+
+.sidebar .container-img{
+	text-align: center;
+	padding-top: 1rem;
 }
 
 .closebtn{
@@ -235,6 +244,38 @@ footer div p{
 	font-size: .8rem;
 }
 
+.sidebar table{
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.sidebar table caption {
+	font-size: 1.5em;
+	margin: .5em 0 .75em;
+}
+
+.sidebar table tr {
+	background-color: #f8f8f8;
+	border: 1px solid #ddd;
+	padding: .35em;
+}
+
+.sidebar table th,
+.sidebar table td {
+	padding: .625em;
+	text-align: center;
+}
+
+.sidebar table th {
+	font-size: .85em;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+}
+
 @media (pointer: fine){
 	#btn{
 		display: none;
@@ -295,6 +336,59 @@ footer div p{
 	
 	.showSidebar{
 		width: calc(100vw - var(--gapContainer) - 2*(var(--paddingContainer)));
+	}
+
+	.sidebar table{
+		margin: auto;
+		width: 90%;
+		border: 0;
+	}
+
+	.sidebar table caption{
+		font-size: 1.3em;
+	}
+
+	.sidebar table thead{
+		border: none;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
+
+	.sidebar table tr{
+		border-bottom: 3px solid #ddd;
+		display: block;
+		margin-bottom: .625em;
+	}
+	  
+	.sidebar table td{
+		border-bottom: 1px solid #ddd;
+		display: block;
+		font-size: .9em;
+		text-align: right;
+	}
+
+	.sidebar table td::before {
+		/*
+		* aria-label has no advantage, it won't be read inside a table
+		content: attr(aria-label);
+		*/
+		content: attr(data-label);
+		float: left;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	  
+	.sidebar table td:last-child {
+		border-bottom: 0;
+	}
+
+	.sidebar .container-img img{
+		width: 280px;
 	}
 	
 }
