@@ -167,11 +167,11 @@ header{
 	}
 }
 .clip-path-hidden{
-	animation: clip-path-hidden 2s;
+	animation: clip-path-hidden .5s;
 }
 
 .clip-path-show{
-	animation: clip-path-show 2s;
+	animation: clip-path-show .5s;
 }
 
 footer{

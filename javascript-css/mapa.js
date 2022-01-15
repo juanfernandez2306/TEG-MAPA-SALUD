@@ -206,7 +206,7 @@ function createMap(objArrayResponse){
 			
 			setTimeout(function(){
 				sidebar.classList.remove('clip-path-show');
-			}, 2000);
+			}, 500);
 			
 		});
 	}

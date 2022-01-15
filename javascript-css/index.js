@@ -11,7 +11,7 @@ function closeSidebar(e){
 		sidebar.classList.add('hiddenSidebar');
 		btn.removeAttribute('disabled');
 		sidebar.classList.remove('clip-path-hidden');
-	}, 2000);
+	}, 490);
 }
 
 async function getFetch(url, type){
