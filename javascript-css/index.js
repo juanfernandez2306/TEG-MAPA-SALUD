@@ -2,6 +2,7 @@
 function closeSidebar(e){
 	e.preventDefault();
 	var btn = e.target;
+
 	const sidebar = document.querySelector('div.sidebar');
 	
 	btn.disabled = true;
