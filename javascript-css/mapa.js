@@ -372,6 +372,8 @@ function createMap(objArrayResponse){
 	}
 	
 	addInfoLayer();
+
+	window.addEventListener('resize', addInfoLayer, false);
 	
 	var parentGroup = L.markerClusterGroup();
 		
@@ -394,7 +396,6 @@ function createMap(objArrayResponse){
 	mySubGroup3.addTo(map);
 	mySubGroup4.addTo(map);
 	
-	window.addEventListener('resize', addInfoLayer, false);
 }
 
 function createMaprespaldo(){
