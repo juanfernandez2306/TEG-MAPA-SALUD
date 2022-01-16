@@ -57,8 +57,9 @@ function init(){
 		getFetch('capas/establecimientos_salud.geojson', 'json')
 	])
 	.then(objArrayResponse => {
-		document.getElementById('preloader').classList.add('hiddenSidebar');
-		document.querySelector('div.container').classList.remove('hiddenSidebar');
+		document.getElementById('div_preloader').classList.remove('div_preloader');
+		document.getElementById('div_preloader').classList.add('hiddenSidebar');
+		document.getElementById('container').classList.remove('hiddenSidebar');
 		createMap(objArrayResponse);
 		
 	})

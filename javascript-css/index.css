@@ -78,7 +78,7 @@ header{
 	animation-iteration-count: infinite;
 }
 
-#preloader{
+.div_preloader{
 	max-width: 1140px;
 	margin: auto;
 	height: 100vh;
@@ -367,7 +367,7 @@ footer div p{
 		text-align: center;
 	}
 	
-	#preloader, #map{
+	#div_preloader, #map{
 		height: 100vh;
 	}
 

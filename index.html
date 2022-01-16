@@ -47,11 +47,8 @@
 	<link rel="stylesheet" href="../complementos/leafletJS/leaflet_v1.7.1/leaflet.css">
 	<script src="../complementos/leafletJS/leaflet_v1.7.1/leaflet-src.js"></script>
 
-	<!--
 	<link rel="stylesheet" href="//unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css" type="text/css">
 	<script src="//unpkg.com/leaflet-gesture-handling"></script>
-	-->
-	
 	
 	<link rel="stylesheet" href="../complementos/leafletJS/Leaflet_markercluster/MarkerCluster.css">
 	<link rel="stylesheet" href="../complementos/leafletJS/Leaflet_markercluster/MarkerCluster.Default.css">
@@ -84,22 +81,22 @@
 				<button class="btn-close"><i class="fas fa-times"></i>Cerrar</button>
 			</div>
 		</div>
-		<div id="preloader">
+		<div id="div_preloader" class="div_preloader">
 			<div id="contenido-preloader">
 				<h1>
 					<i class="fas fa-cloud-download-alt preloader"></i>
 				</h1>
 				<h1>Espere un momento...</h1>
-				<h1>Descargando datos</h1>
+				<h1 id="msg_error">Descargando datos</h1>
 			</div>
 		</div>
 		<div id="container" class="container hiddenSidebar">
 		
 			<header class="header bordes">
 				<figure class="figure">
-					<img id="imgLuz" src="img/LUZ.jpg" width="80px">
-					<img id="imgPost" src="img/postgrado.png" width="300px">
-					<img id="imgGeo" src="img/geodesia-LUZ.png" width="85px">
+					<img id="imgLuz" width="80px">
+					<img id="imgPost" width="300px">
+					<img id="imgGeo" width="85px">
 				</figure>
 				<div>
 					<h1>Mapa Sanitario del Municipio Mara</h1>
@@ -125,10 +122,10 @@
 				<div class="logos">
 					<span>&copy; 2022 Juan Fernandez</span>
 					<div>
-						<a href="mailto:juanfernandez2306@gmail.com?Subject=Mapa%20github">
+						<a target="_blank" href="http://juanfernandez2306.blogspot.com/2019/05/sig-aplicados-en-los-servicios-de-salud.html">
 							<i class="fab fa-blogger"></i>
 						</a>
-						<a href="https://twitter.com/juancho_2306">
+						<a target="_blank" href="https://twitter.com/juancho_2306">
 							<i class="fab fa-twitter"></i>
 						</a>
 					</div>

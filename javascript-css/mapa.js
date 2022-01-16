@@ -130,6 +130,10 @@ function createMap(objArrayResponse){
 		URL_IMG_ASIC, URL_IMG_CDI, URL_IMG_HOSPITAL,
 		URL_IMG_CPT1, URL_IMG_CPT2, URL_IMG_RAES,
 		JSON_ASIC, JSON_ESTABLECIMIENTOS_SALUD] = objArrayResponse;
+
+	document.getElementById('imgLuz').src = URL_IMG_LUZ;
+	document.getElementById('imgPost').src = URL_IMG_POSTGRADO;
+	document.getElementById('imgGeo').src = URL_IMG_GEODESIA;
 	
 	const initial_coordinates = [10.90847, -72.08446];
 	
@@ -137,8 +141,8 @@ function createMap(objArrayResponse){
 		center: initial_coordinates,
 		zoom: 10,
 		minZoom: 10,
-		maxZoom: 18
-		// ,gestureHandling: true
+		maxZoom: 18,
+		gestureHandling: true
 	});
 	
 	var escala = L.control.scale({imperial: false}).addTo(map);
