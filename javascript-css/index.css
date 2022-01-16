@@ -79,7 +79,8 @@ header{
 }
 
 #preloader{
-	width: 100vw;
+	max-width: 1140px;
+	margin: auto;
 	height: 100vh;
 	display: flex;
 	flex-direction: row;
@@ -232,7 +233,7 @@ footer div p{
 	padding-top: 1rem;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	align-items: center;
 }
 
@@ -366,8 +367,12 @@ footer div p{
 		text-align: center;
 	}
 	
-	#map{
+	#preloader, #map{
 		height: 100vh;
+	}
+
+	.logos{
+		justify-content: space-between;
 	}
 	
 	.showSidebar{
