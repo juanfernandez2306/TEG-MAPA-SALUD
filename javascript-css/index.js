@@ -57,11 +57,15 @@ function init(){
 		getFetch('capas/establecimientos_salud.geojson', 'json')
 	])
 	.then(objArrayResponse => {
-		
+		document.getElementById('preloader').classList.add('hiddenSidebar');
+		document.querySelector('div.container').classList.remove('hiddenSidebar');
 		createMap(objArrayResponse);
 		
 	})
 	.catch((error) => {
+		var msg_error = document.getElementById('msg_error');
+		msg_error.textContent = 'Ocurrió un error al descargar datos';
+		msg_error.classList.add('preloader');
 		console.log(error);
 	})
 	

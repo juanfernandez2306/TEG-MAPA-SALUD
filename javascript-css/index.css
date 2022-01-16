@@ -60,6 +60,38 @@ header{
 	background: white;
 }
 
+@keyframes preloader{
+	0%{
+		color : var(--myColor);
+	}
+	50%{
+		color : #eee;
+	}
+	100%{
+		color : var(--myColor);
+	}
+}
+
+.preloader{
+	animation-name : preloader;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+}
+
+#preloader{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+#contenido-preloader{
+	text-align: center;
+	color: var(--myColor);
+}
+
 .container{
 	margin-left: 300px;
 	width: 90vw;
@@ -74,6 +106,10 @@ header{
 
 #btn{
 	text-align: center;
+}
+
+.title-Sidebar aside h1 i{
+	margin-right: .5rem;
 }
 
 .container .header{
