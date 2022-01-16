@@ -32,7 +32,7 @@ function createTableInfo(props){
 	return html;
 }
 
-function createDiv(urlLogo, props){
+function createDiv(urlLogo, props, createTable = false){
 	var html = `
 		<div class="headerInfoMap">
 			<div>
@@ -45,7 +45,7 @@ function createDiv(urlLogo, props){
 			</div>
 		</div>
 	`;
-	
+
 	if (props){
 		var textMun = String(props.municipios).replace(',', ' - '),
 			arrayMun = String(props.municipios).split(','),
@@ -91,7 +91,36 @@ function createDiv(urlLogo, props){
 		</div>`;
 	}
 	
-	return html;
+	if(createTable == false){
+
+		return html;
+
+	}else{
+		var table = `
+		<table>
+			<caption>
+			<img src="${urlLogo}" width="40px">
+			<h4>
+				AREA DE SALUD INTEGRAL COMUNITARIO (ASIC)
+			</h4>
+			</caption>
+			<tr>
+				<th>NOMBRE</th>
+				<td>${asic}</td>
+			</tr>
+			<tr>
+				<th>${nameMun}</th>
+				<td>${textMun}</td>
+			</tr>
+			<tr>
+				<th>${nameParr}</th>
+				<td>${textParr}</td>
+			</tr>
+		</table>`;
+
+		return table;
+	}
+	
 	
 }
 
@@ -108,8 +137,8 @@ function createMap(objArrayResponse){
 		center: initial_coordinates,
 		zoom: 10,
 		minZoom: 10,
-		maxZoom: 18,
-		gestureHandling: true
+		maxZoom: 18
+		// ,gestureHandling: true
 	});
 	
 	var escala = L.control.scale({imperial: false}).addTo(map);
@@ -171,9 +200,28 @@ function createMap(objArrayResponse){
 		});
 	}
 		
-	function consultToFeaturePoint(e){
-		var props = e.target.feature.properties;
-		console.log(props);
+	function consultToFeaturePolygon(e){
+		map.fitBounds(e.target.getBounds());
+		var props = e.target.feature.properties,
+			sidebar = document.querySelector('.sidebar'),
+			html = createDiv(URL_IMG_ASIC, props, true),
+			sidebarContent = document.getElementById('sidebarContent');
+
+			sidebar.classList.remove('hiddenSidebar');
+			sidebar.classList.add('showSidebar');
+			sidebar.classList.add('clip-path-show');
+
+			sidebarContent.innerHTML = html;
+
+			setTimeout(function(){
+				sidebar.classList.remove('clip-path-show');
+			}, 500);
+	}
+
+	function onEachFeaturePolygon(feature, layer){
+		layer.on({
+			click: consultToFeaturePolygon
+		})
 	}
 	
 	function onEachFeaturePoint(feature, layer) {
@@ -300,7 +348,8 @@ function createMap(objArrayResponse){
 			map.removeControl(info);
 			
 			geojson = L.geoJson(JSON_ASIC , {
-				style: style
+				style: style,
+				onEachFeature: onEachFeaturePolygon
 			});
 			
 			map.setZoom(9);
