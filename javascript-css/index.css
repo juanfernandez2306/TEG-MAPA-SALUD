@@ -12,6 +12,11 @@ body{
 	font-weight: 100;
 }
 
+.txtlegend{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+}
+
 :root{
 	--myColor: rgb(83,144,201);
 	--paddingContainer : .4rem;

@@ -409,11 +409,11 @@ function createMap(objArrayResponse){
 	
 	control = L.control.layers(mapbase, null, { collapsed: true,  position: 'topright'}).addTo(map);
 	parentGroup.addTo(map);
-	control.addOverlay(mySubGroup2, `<img src="${URL_IMG_CPT1}" width="25"/><b>CONSULTORIO MÉDICO POPULAR</b>`);
-	control.addOverlay(mySubGroup3, `<img src="${URL_IMG_CPT2}" width="25"/><b>AMBULATORIO RED COMUNAL</b>`);
-	control.addOverlay(mySubGroup4, `<img src="${URL_IMG_RAES}" width="25"/><b>AMBULATORIO RED ESPECIALIZADA</b>`);
-	control.addOverlay(mySubGroup, `<img src="${URL_IMG_CDI}" width="25"/><b>CENTRO DE DIAGNOSTICO INTEGRAL</b>`);
-	control.addOverlay(mySubGroup1, `<img src="${URL_IMG_HOSPITAL}" width="35"/><b>HOSPITALES</b>`);
+	control.addOverlay(mySubGroup2, `<img src="${URL_IMG_CPT1}" width="25"/><b class="txtlegend">CONSULTORIO MÉDICO POPULAR</b>`);
+	control.addOverlay(mySubGroup3, `<img src="${URL_IMG_CPT2}" width="25"/><b class="txtlegend">AMBULATORIO RED COMUNAL</b>`);
+	control.addOverlay(mySubGroup4, `<img src="${URL_IMG_RAES}" width="25"/><b class="txtlegend">AMBULATORIO RED ESPECIALIZADA</b>`);
+	control.addOverlay(mySubGroup, `<img src="${URL_IMG_CDI}" width="25"/><b class="txtlegend">CENTRO DE DIAGNOSTICO INTEGRAL</b>`);
+	control.addOverlay(mySubGroup1, `<img src="${URL_IMG_HOSPITAL}" width="35"/><b class="txtlegend">HOSPITALES</b>`);
 	mySubGroup.addTo(map);
 	mySubGroup1.addTo(map);
 	mySubGroup2.addTo(map);
