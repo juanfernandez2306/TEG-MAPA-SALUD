@@ -142,8 +142,28 @@ function createMap(objArrayResponse){
 		zoom: 10,
 		minZoom: 10,
 		maxZoom: 18,
-		gestureHandling: true
+		gestureHandling: true,
+		fullscreenControl: true,
+		fullscreenControlOptions: {
+			title:"Show me the fullscreen !",
+			titleCancel:"Exit fullscreen mode"}
 	});
+
+	var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+		minZoom: 7,
+		maxZoom: 19,
+		type:'osm'
+		}).addTo(map);
+	
+	var hybridMutant = L.gridLayer.googleMutant({
+		type:'hybrid'
+		});
+		
+	var mapbase = {
+		"Mapa base de OpenStreetMap" : osm,
+		"Mapa base de Google Satelite" : hybridMutant
+	};
 	
 	var escala = L.control.scale({imperial: false}).addTo(map);
 	
@@ -387,7 +407,7 @@ function createMap(objArrayResponse){
 	mySubGroup3 = L.featureGroup.subGroup(parentGroup, [pts_amb]);
 	mySubGroup4 = L.featureGroup.subGroup(parentGroup, [pts_raes]);
 	
-	control = L.control.layers(null, null, { collapsed: true,  position: 'topright'}).addTo(map);
+	control = L.control.layers(mapbase, null, { collapsed: true,  position: 'topright'}).addTo(map);
 	parentGroup.addTo(map);
 	control.addOverlay(mySubGroup2, `<img src="${URL_IMG_CPT1}" width="25"/><b>CONSULTORIO MÉDICO POPULAR</b>`);
 	control.addOverlay(mySubGroup3, `<img src="${URL_IMG_CPT2}" width="25"/><b>AMBULATORIO RED COMUNAL</b>`);
