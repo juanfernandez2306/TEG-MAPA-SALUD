@@ -7,6 +7,10 @@ html {
 	scroll-behavior: smooth;
 }
 
+body{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+}
 
 :root{
 	--myColor: rgb(83,144,201);
@@ -58,6 +62,10 @@ html {
 
 header{
 	background: white;
+}
+
+header div h1{
+	font-weight: 400;
 }
 
 @keyframes preloader{
@@ -157,6 +165,10 @@ header{
 	overflow: scroll;
 }
 
+#sidebarContent table caption{
+	font-weight: 400;
+}
+
 .sidebar .title-Sidebar{
 	display: flex;
 	flex-direction: row;
@@ -178,7 +190,7 @@ header{
 
 .closebtn{
 	font-size: 1.5rem;
-	font-weight: bold;
+	font-weight: 400;
 	color: black;
 }
 
@@ -273,7 +285,7 @@ footer div p{
 .headerInfoMap div h4{
 	text-align: center;
 	font-size: .8rem;
-	font-weight: bold;
+	font-weight: 400;
 }
 
 .bodyInfoMap p:nth-child(2),
@@ -420,7 +432,7 @@ footer div p{
 		*/
 		content: attr(data-label);
 		float: left;
-		font-weight: bold;
+		font-weight: 400;
 		text-transform: uppercase;
 	}
 	  
