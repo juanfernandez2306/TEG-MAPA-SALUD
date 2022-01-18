@@ -133,13 +133,23 @@ function createDivHoverFeaturePolygonASIC(urlLogo, propsFeaturePolygon){
 	
 }
 
-
+/**
+ * @typeof {Object} json_layer_asic
+ * @property {String} type - default value feature collection
+ * @property {Array} features
+ * @property {Array} features.feature
+ * @property {String} features.feature.type - default value Feature
+ * @property {Array} features.feature.geometry
+ * @property {String} features.feature.geometry.type - defaul value MultiPolygon
+ * @property {Array} features.feature.geometry.coordinates
+ * @property {Array} features.feature.properties -as view propsFeaturePolygon
+ */
 
 /**
  * add polygon layer ASIC in map
  * @param {Object} map - element object leaflet
  * @param {Blob} url_logo - blob img logo ASIC
- * @param {Object} json_layer_point - layer geojson point
+ * @param {Object} json_layer_asic - layer geojson point
  */
 
 function addLayerPolygonASIC({map, url_logo, json_layer_asic}){
