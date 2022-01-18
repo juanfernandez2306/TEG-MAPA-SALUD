@@ -32,7 +32,7 @@ function createTableInfo(props){
 	return html;
 }
 
-function createDiv(urlLogo, props, createTable = false){
+function createDiv(urlLogo, props){
 	var html = `
 		<div class="headerInfoMap">
 			<div>
@@ -90,37 +90,8 @@ function createDiv(urlLogo, props, createTable = false){
 			<p>DESPLACE EL CURSOR SOBRE UN ASIC</p>
 		</div>`;
 	}
-	
-	if(createTable == false){
 
-		return html;
-
-	}else{
-		var table = `
-		<table>
-			<caption>
-			<img src="${urlLogo}" width="40px">
-			<h4>
-				AREA DE SALUD INTEGRAL COMUNITARIO (ASIC)
-			</h4>
-			</caption>
-			<tr>
-				<th>NOMBRE</th>
-				<td>${asic}</td>
-			</tr>
-			<tr>
-				<th>${nameMun}</th>
-				<td>${textMun}</td>
-			</tr>
-			<tr>
-				<th>${nameParr}</th>
-				<td>${textParr}</td>
-			</tr>
-		</table>`;
-
-		return table;
-	}
-	
+	return html;
 	
 }
 
@@ -223,31 +194,7 @@ function createMap(objArrayResponse){
 			click: zoomToFeature
 		});
 	}
-		
-	function consultToFeaturePolygon(e){
-		map.fitBounds(e.target.getBounds());
-		var props = e.target.feature.properties,
-			sidebar = document.querySelector('.sidebar'),
-			html = createDiv(URL_IMG_ASIC, props, true),
-			sidebarContent = document.getElementById('sidebarContent');
 
-			sidebar.classList.remove('hiddenSidebar');
-			sidebar.classList.add('showSidebar');
-			sidebar.classList.add('clip-path-show');
-
-			sidebarContent.innerHTML = html;
-
-			setTimeout(function(){
-				sidebar.classList.remove('clip-path-show');
-			}, 500);
-	}
-
-	function onEachFeaturePolygon(feature, layer){
-		layer.on({
-			click: consultToFeaturePolygon
-		})
-	}
-	
 	function onEachFeaturePoint(feature, layer) {
 		layer.on('click', function(e){
 			var props = e.target.feature.properties,
@@ -352,52 +299,21 @@ function createMap(objArrayResponse){
 			onEachFeature: onEachFeaturePoint
 		});
 	}
+
+	info.addTo(map);
+			
+	geojson = L.geoJson(JSON_ASIC , {
+		style: style,
+		onEachFeature: onEachFeature
+	});
+
+	geojson.addTo(map);
 	
 	var pts_hospitales = filter_layers_geojson(1),
 		pts_cdi = filter_layers_geojson(2),
 		pts_raes = filter_layers_geojson(3),
 		pts_amb = filter_layers_geojson(4),
 		pts_cmp = filter_layers_geojson(5);
-	
-	function addInfoLayer(){
-		
-		if(map.hasLayer(geojson)){
-			map.removeLayer(geojson);
-		}
-		
-		const mediaquery = "(max-width: 576px) or (pointer: coarse)";
-		
-		if(window.matchMedia(mediaquery).matches){
-			
-			map.removeControl(info);
-			
-			geojson = L.geoJson(JSON_ASIC , {
-				style: style,
-				onEachFeature: onEachFeaturePolygon
-			});
-			
-			map.setZoom(9);
-			map.setMinZoom(9);
-			map.setView(initial_coordinates, 9);
-			
-		}else{
-			
-			info.addTo(map);
-			
-			geojson = L.geoJson(JSON_ASIC , {
-				style: style,
-				onEachFeature: onEachFeature
-			});
-			
-		}
-		
-		geojson.addTo(map)
-		
-	}
-	
-	addInfoLayer();
-
-	window.addEventListener('resize', addInfoLayer, false);
 	
 	var parentGroup = L.markerClusterGroup();
 		

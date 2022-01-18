@@ -366,6 +366,10 @@ footer div p{
 	.container .header{
 		grid-template-columns: minmax(300px, 1fr);
 	}
+
+	.info{
+		width: 75%;
+	}
 	
 	.figure{
 		display: grid;
