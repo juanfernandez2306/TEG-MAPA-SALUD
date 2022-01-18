@@ -1,3 +1,22 @@
+/**
+ * @typeof {Object} props
+ * @property {Array} properties - features
+ * @property {String} properties.asic - ASIC name
+ * @property {String} properties.municipio
+ * @property {String} properties.parroquia
+ * @property {String} properties.direccion
+ * @property {String} properties.nombre
+ * @property {String} properties.tipo
+ * @property {String} properties.url_foto
+ * @property {Number} properties.cod_tipo
+ */
+
+/**
+ * creation of table information of properties
+ * of the geojson layer of health establishment
+ * @param {Object} props
+ * @returns {String} html - text string formatted as html table 
+ */
 function createTableInfo(props){
 	var html = `
 		<table class="">
