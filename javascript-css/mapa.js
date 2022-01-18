@@ -1,5 +1,5 @@
 /**
- * @typeof {Object} props - health facility properties
+ * @typeof {Object} propsLayerPoint - health facility properties
  * @property {Array} properties - features
  * @property {String} properties.asic - ASIC name
  * @property {String} properties.municipio - municipality name
@@ -16,10 +16,11 @@
 /**
  * creation of table information of properties
  * of the geojson layer of health establishment
- * @param {Object} props
+ * @param {Object} propsLayerPoint
  * @returns {String} html - text string formatted as html table 
  */
-function createTableInfo(props){
+function createTableInfo(propsLayerPoint){
+	var props = propsLayerPoint;
 	var html = `
 		<table class="">
 			<caption>Establecimiento de Salud</caption>
@@ -132,6 +133,15 @@ function createDivHoverFeaturePolygonASIC(urlLogo, propsFeaturePolygon){
 	
 }
 
+
+
+/**
+ * add polygon layer ASIC in map
+ * @param {Object} map - element object leaflet
+ * @param {Blob} url_logo - blob img logo ASIC
+ * @param {Object} json_layer_point - layer geojson point
+ */
+
 function addLayerPolygonASIC({map, url_logo, json_layer_asic}){
 
 	var info = L.control();
@@ -199,9 +209,27 @@ function addLayerPolygonASIC({map, url_logo, json_layer_asic}){
 
 }
 
-function filterLayerPont({cod_tipo, 
-	json_layer_point, 
-	array_logos}){
+/**
+ * @typeof {Object} json_layer_point
+ * @property {String} type - default value feature collection
+ * @property {Array} features
+ * @property {Array} features.feature
+ * @property {String} features.feature.type - default value Feature
+ * @property {Array} features.feature.geometry
+ * @property {String} features.feature.geometry.type - defaul value Point
+ * @property {Array} features.feature.geometry.coordinates - [x, y] | [longitud, latitud]
+ * @property {Array} features.feature.properties -as view propsLayerPoint
+ */
+
+/**
+ * filter layers of health facilities
+ * @param {Number} cod_tipo - numeric code with range from 1 to 5
+ * @param {Object} json_layer_point - layer geojson
+ * @param {Array} array_logos - photographic array of 5 elements of the health facility icons
+ * @returns {Object} geojson - object leaflet geojson
+ */
+
+function filterLayerPont({cod_tipo, json_layer_point, array_logos}){
 	
 	/**
 		*selection of the type of icon according 
