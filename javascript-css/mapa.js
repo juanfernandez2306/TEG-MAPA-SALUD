@@ -1,14 +1,16 @@
 /**
- * @typeof {Object} props
+ * @typeof {Object} props - health facility properties
  * @property {Array} properties - features
  * @property {String} properties.asic - ASIC name
- * @property {String} properties.municipio
- * @property {String} properties.parroquia
- * @property {String} properties.direccion
- * @property {String} properties.nombre
- * @property {String} properties.tipo
- * @property {String} properties.url_foto
- * @property {Number} properties.cod_tipo
+ * @property {String} properties.municipio - municipality name
+ * @property {String} properties.parroquia - parish name DPT
+ * @property {String} properties.direccion - direction
+ * @property {String} properties.nombre - name health establishment
+ * @property {String} properties.tipo - types of health establishments
+ * @property {String} properties.url_foto - facade photo url
+ * @property {Number} properties.cod_tipo - own coding criteria
+ * 1 -> Hospital	2 -> CDI	3 -> RAES
+ * 4 -> AMB RACS	5 -> CMP
  */
 
 /**
