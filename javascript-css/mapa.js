@@ -53,6 +53,21 @@ function createTableInfo(props){
 	return html;
 }
 
+/**
+ * @typeof {Object} props - feature layer ASIC
+ * @param {Array} properties - default features layer 
+ * @param {String} properties.asic - health geography area name DPT
+ * @param {String} properties.muncipios - name of the municipalities of the ASIC
+ * @param {String} properties.parr - name of the parish DPT of the ASIC
+ * @param {Boolean} properties.cobertura_mun - if [false|null] when unique municipality
+ */
+
+/**
+ * create div hover features polygon ASIC
+ * @param {String} urlLogo - url img logo ASIC
+ * @param {Object} props - feature layer ASIC
+ * @return {String} html - text string formatted as html element div info
+ */
 function createDiv(urlLogo, props){
 	var html = `
 		<div class="headerInfoMap">
