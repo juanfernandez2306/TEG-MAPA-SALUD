@@ -34,6 +34,12 @@ async function getFetch(url, type){
 	}
 }
 
+function loadImgheader({logo_luz, logo_postgrado, logo_escuela}){
+	document.getElementById('imgLuz').src = logo_luz;
+	document.getElementById('imgPost').src = logo_postgrado;
+	document.getElementById('imgGeo').src = logo_escuela;
+}
+
 function init(){
 	const elementBtnClose = ['a.closebtn', 'button.btn-close'];
 	
@@ -48,11 +54,11 @@ function init(){
 		getFetch('https://i.ibb.co/N1TXJLX/postgrado.png', 'img'),
 		getFetch('https://i.ibb.co/bdhnd2z/geodesia-LUZ.png', 'img'),
 		getFetch('https://i.ibb.co/rpb72kc/logo-asic.png', 'img'),
-		getFetch('https://i.ibb.co/gT1Vq6q/CDI.png', 'img'),
 		getFetch('https://i.ibb.co/8xGz1Xz/HOSPITAL.png', 'img'),
-		getFetch('https://i.ibb.co/D7SwCJW/CPT1.png', 'img'),
-		getFetch('https://i.ibb.co/QY879dr/CPT2.png', 'img'),
+		getFetch('https://i.ibb.co/gT1Vq6q/CDI.png', 'img'),
 		getFetch('https://i.ibb.co/tJM3Ps2/RAES.png', 'img'),
+		getFetch('https://i.ibb.co/QY879dr/CPT2.png', 'img'),
+		getFetch('https://i.ibb.co/D7SwCJW/CPT1.png', 'img'),
 		getFetch('capas/asic.json', 'json'),
 		getFetch('capas/establecimientos_salud.geojson', 'json')
 	])
@@ -60,7 +66,30 @@ function init(){
 		document.getElementById('div_preloader').classList.remove('div_preloader');
 		document.getElementById('div_preloader').classList.add('hiddenSidebar');
 		document.getElementById('container').classList.remove('hiddenSidebar');
-		createMap(objArrayResponse);
+
+		loadImgheader({
+			'logo_luz': objArrayResponse[0], 
+			'logo_postgrado': objArrayResponse[1], 
+			'logo_escuela': objArrayResponse[2]
+		});
+
+		var url_logo = objArrayResponse[3],
+			array_logos = [
+				objArrayResponse[4],
+				objArrayResponse[5],
+				objArrayResponse[6],
+				objArrayResponse[7],
+				objArrayResponse[8]
+			],
+			json_layer_asic = objArrayResponse[9],
+			json_layer_point = objArrayResponse[10];
+		
+		createMap({
+			'url_logo': url_logo,
+			'array_logos' : array_logos,
+			'json_layer_asic' : json_layer_asic,
+			'json_layer_point' : json_layer_point
+		});
 		
 	})
 	.catch((error) => {
