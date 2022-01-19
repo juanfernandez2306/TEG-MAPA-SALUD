@@ -12,7 +12,7 @@ Trabajo de Grado - Universidad del Zulia.
 <a targert="_blank" href="https://juanfernandez2306.github.io/TEG-MAPA-SALUD/">View Demo</a>
 
 ## Framework
-- Font Awsome
+- Font Awesome
 - Leaflet JS
 
 ## Instalación
